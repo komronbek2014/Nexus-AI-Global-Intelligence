@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI | Global Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <!-- Header -->
+    <header class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/50 backdrop-blur-md z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <i class="fas fa-brain text-white text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight">Nexus <span class="text-blue-500">AI</span></h1>
+                <p class="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Universal Intelligence</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="clearChat()" class="text-slate-400 hover:text-white transition text-sm flex items-center gap-2">
+                <i class="fas fa-trash-alt"></i> <span class="hidden sm:inline">Tozalash</span>
+            </button>
+            <div class="h-6 w-[1px] bg-slate-700"></div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-xs font-bold text-slate-300">Ready</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chat Area -->
+    <main id="chat-box" class="flex-grow overflow-y-auto p-4 md:p-8 space-y-6 custom-scrollbar chat-container">
+        <!-- AI Welcome Message -->
+        <div class="flex justify-start">
+            <div class="max-w-[85%] md:max-w-[70%] ai-bubble p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <p class="text-slate-200">Salom! Men <b>Nexus AI</b> yordamchisiman. Sizga qanday yordam bera olaman? Masalan, biror kod yozib berishim, maslahat berishim yoki savollaringizga javob berishim mumkin.</p>
+                <div class="mt-3 flex gap-2">
+                    <button onclick="setQuery('Menga qiziqarli fakt ayt')" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded-full border border-slate-700 transition">Fakt ayt</button>
+                    <button onclick="setQuery('Dasturlashni o\'rganish uchun yo\'l xaritasi')" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded-full border border-slate-700 transition">Dasturlash</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Typing Indicator (Hidden by default) -->
+    <div id="typing-ui" class="hidden px-8 py-2">
+        <div class="typing-indicator flex gap-1 items-center text-blue-400 text-xs font-medium">
+            <span></span><span></span><span></span>
+            <span class="ml-2">Nexus AI o'ylamoqda...</span>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <footer class="p-4 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto flex items-end gap-3 bg-slate-800 p-2 rounded-2xl shadow-inner border border-slate-700">
+            <button id="voice-btn" onclick="toggleVoice()" class="p-3 text-slate-400 hover:text-blue-500 transition-all flex-shrink-0" title="Ovozli savol">
+                <i class="fas fa-microphone text-xl"></i>
+            </button>
+            
+            <textarea id="user-input" rows="1" class="w-full bg-transparent border-none outline-none py-3 px-2 resize-none text-slate-100 placeholder-slate-500" placeholder="Savolingizni bu yerga yozing..." oninput="autoResize(this)"></textarea>
+            
+            <button id="send-btn" onclick="sendMessage()" class="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all shadow-lg flex-shrink-0 transform active:scale-95">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <p class="text-center text-[10px] text-slate-600 mt-2 font-medium">Gemini 2.5 Flash texnologiyasi asosida ishlaydi.</p>
+    </footer>
+
+</body>
+</html>
